@@ -4,10 +4,10 @@
     display: flex;
     width: 215px;
     flex-direction: column;
-    gap: 10px;
+    margin-bottom: 30px;
     .image {
       width: 100%;
-      height: 400px;
+      height: 300px;
       overflow: hidden;
       position: relative;
 
@@ -44,14 +44,16 @@
     }
     .prices {
       display: flex;
-      gap: 20px;
+      gap: 15px;
       .old {
+        margin: 0;
         font-size: 18px;
         font-weight: 500;
         color: grey;
         text-decoration: line-through;
       }
       .current {
+        margin: 0;
         font-size: 18px;
         font-weight: 500;
       }
