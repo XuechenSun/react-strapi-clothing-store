@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 import "./index.scss";
 
 import Card from "../Card";
+import useFetch from "../../hooks/useFetch";
 
-const FeaturedProducts = ({ type, about, data }) => {
+const FeaturedProducts = ({ type, about }) => {
+  const { data, loading, error } = useFetch(
+    `/products?populate=*&[filters][type][$eq]=${type}&pagination[limit]=4`
+  );
+
   return (
     <div className="featuredProducts">
       <div className="top">
@@ -12,9 +18,11 @@ const FeaturedProducts = ({ type, about, data }) => {
       </div>
 
       <div className="bottom">
-        {data.map((dataObj) => (
-          <Card item={dataObj} key={dataObj.id} />
-        ))}
+        {error
+          ? "Something went wrong!"
+          : loading
+          ? "Loading..."
+          : data.map((dataObj) => <Card item={dataObj} key={dataObj.id} />)}
       </div>
     </div>
   );

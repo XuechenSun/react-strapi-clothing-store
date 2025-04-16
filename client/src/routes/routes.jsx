@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import { ErrorBoundary } from "react-error-boundary";
 import Home from "../pages/Home";
 import Products from "../pages/Products";
 import Product from "../pages/Product";
@@ -10,7 +11,11 @@ const Layout = () => {
   return (
     <div className="app">
       <Navbar />
-      <Outlet />
+      <ErrorBoundary
+        fallback={<p>Oops! Network errror. Please try again later!</p>}
+      >
+        <Outlet />
+      </ErrorBoundary>
       <Footer />
     </div>
   );

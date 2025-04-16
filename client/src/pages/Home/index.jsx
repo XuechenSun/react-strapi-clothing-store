@@ -7,8 +7,12 @@ import { featuredProductsData, trendingProductsData } from "../../Data";
 import Contact from "../../components/Contact";
 
 const Home = () => {
+  // const BuggyComponent = () => {
+  //   throw new Error("This is a deliberate error to test ErrorBoundary!");
+  // };
   return (
     <div className="home">
+      {/* <BuggyComponent /> */}
       <Slider />
       <FeaturedProducts
         type="featured"
