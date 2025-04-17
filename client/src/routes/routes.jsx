@@ -30,7 +30,7 @@ export default [
         element: <Home />,
       },
       {
-        path: "/products/:categoryid",
+        path: "/products/:categoryId",
         element: <Products />,
       },
       {

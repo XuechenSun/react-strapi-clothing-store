@@ -7,8 +7,17 @@ import SearchIcon from "@mui/icons-material/Search";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import useFetch from "../../hooks/useFetch";
 
 const Navbar = () => {
+  const { data } = useFetch("/categories");
+  if (!data) {
+    return null; // 或者 return <Loading />
+  }
+
+  const womenCategory = data.find((cate) => cate.title === "women");
+  const menCategory = data.find((cate) => cate.title === "men");
+
   return (
     <div className="navbar">
       <div className="wrapper">
@@ -22,14 +31,18 @@ const Navbar = () => {
             <KeyboardArrowDownIcon />
           </div>
           <div className="item">
-            <Link className="link" to="products/1">
-              Women
-            </Link>
+            {womenCategory && (
+              <Link className="link" to={`products/${womenCategory.id}`}>
+                Women
+              </Link>
+            )}
           </div>
           <div className="item">
-            <Link className="link" to="products/2">
-              Men
-            </Link>
+            {menCategory && (
+              <Link className="link" to={`products/${menCategory.id}`}>
+                Men
+              </Link>
+            )}
           </div>
           <div className="item">
             <Link className="link" to="products/3">
