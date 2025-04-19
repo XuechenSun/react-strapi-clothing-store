@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./index.scss";
+
+import Cart from "../Cart";
 
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import SearchIcon from "@mui/icons-material/Search";
@@ -8,15 +10,19 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import useFetch from "../../hooks/useFetch";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const { data } = useFetch("/categories");
+  const [openCart, setOpenCart] = useState(false);
   if (!data) {
     return null; // 或者 return <Loading />
   }
 
   const womenCategory = data.find((cate) => cate.title === "women");
   const menCategory = data.find((cate) => cate.title === "men");
+
+  const products = useSelector((state) => state.cart.products);
 
   return (
     <div className="navbar">
@@ -80,13 +86,14 @@ const Navbar = () => {
             <SearchIcon />
             <PersonOutlineIcon />
             <FavoriteBorderIcon />
-            <div className="cartIcon">
+            <div className="cartIcon" onClick={() => setOpenCart(!openCart)}>
               <ShoppingCartOutlinedIcon />
-              <span>0</span>
+              <span>{products.length}</span>
             </div>
           </div>
         </div>
       </div>
+      {openCart && <Cart />}
     </div>
   );
 };

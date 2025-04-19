@@ -3,11 +3,11 @@ import "./index.scss";
 import Card from "../Card";
 import useFetch from "../../hooks/useFetch";
 
-const ListCard = ({ cateId, subCateId, maxPrice, sort }) => {
+const ListCard = ({ cateId, subCateId, sortPrice }) => {
   const { data, loading, error } = useFetch(
     `/products?populate=*&filters[categories][id]=${cateId}${subCateId.map(
       (item) => `&filters[sub_categories][id][$eq]=${item}`
-    )}`
+    )}${sortPrice ? `&sort=price:${sortPrice}` : ""}`
   );
 
   return (

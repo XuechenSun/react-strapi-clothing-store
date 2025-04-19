@@ -68,6 +68,13 @@
     },
     "oldPrice": {
       "type": "decimal"
+    },
+    "origin": {
+      "type": "string",
+      "default": "PRC"
+    },
+    "material": {
+      "type": "string"
     }
   }
 }

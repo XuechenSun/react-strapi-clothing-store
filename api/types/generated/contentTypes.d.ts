@@ -433,7 +433,9 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       'api::product.product'
     > &
       Schema.Attribute.Private;
+    material: Schema.Attribute.String;
     oldPrice: Schema.Attribute.Decimal;
+    origin: Schema.Attribute.String & Schema.Attribute.DefaultTo<'PRC'>;
     price: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
     sub_categories: Schema.Attribute.Relation<

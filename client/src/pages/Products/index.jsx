@@ -6,10 +6,13 @@ import useFetch from "../../hooks/useFetch";
 
 const Products = () => {
   const cateId = parseInt(useParams().categoryId);
-  const [maxPrice, setMaxPrice] = useState(1000);
-  const [sort, setSort] = useState(null);
+  /*Load slowly under lots of data
+   const [maxPrice, setMaxPrice] = useState(1000);*/
+  const [sortPrice, setSortPrice] = useState(null);
+
   const [selectedSubCate, setSelectedSubCate] = useState([]);
   // console.log(cateId);
+  // console.log(maxPrice);
   const { data, loading, error } = useFetch(
     `/sub-categories?filters[categories][id][$eq]=${cateId}`
   );
@@ -41,7 +44,7 @@ const Products = () => {
             </div>
           ))}
         </div>
-        <div className="items">
+        {/* <div className="items">
           <h2>Filiter by price</h2>
           <div className="inputItem">
             <span>0</span>
@@ -54,16 +57,29 @@ const Products = () => {
             />
             <span>{maxPrice}</span>
           </div>
-        </div>
+        </div> */}
+
         <div className="items">
           <h2>Sort by</h2>
           <div className="inputItem">
             <input
               type="radio"
+              id="df"
+              value="default"
+              name="sort"
+              checked={sortPrice === null}
+              onChange={(e) => setSortPrice(null)}
+            />
+            <label htmlFor="df">Recommended</label>
+          </div>
+
+          <div className="inputItem">
+            <input
+              type="radio"
               id="lf"
               value="lowfirst"
-              name="price"
-              onChange={(e) => setSort("lowfirst")}
+              name="sort"
+              onChange={(e) => setSortPrice("asc")}
             />
             <label htmlFor="lf">Price (Lowest First)</label>
           </div>
@@ -72,8 +88,8 @@ const Products = () => {
               type="radio"
               id="hf"
               value="highfirst"
-              name="price"
-              onChange={(e) => setSort("highfirst")}
+              name="sort"
+              onChange={(e) => setSortPrice("desc")}
             />
             <label htmlFor="hf">Price (Highest First)</label>
           </div>
@@ -87,8 +103,8 @@ const Products = () => {
         />
         <ListCard
           cateId={cateId}
-          maxPrice={maxPrice}
-          sort={sort}
+          // maxPrice={maxPrice}
+          sortPrice={sortPrice}
           subCateId={selectedSubCate}
         />
       </div>
