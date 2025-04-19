@@ -3,8 +3,6 @@ import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutl
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import "./index.scss";
 
-import { sliderData } from "../../Data";
-
 const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   function handleLeft() {
@@ -22,6 +20,7 @@ const Slider = () => {
     };
   }, []);
  */
+
   return (
     <div className="slider">
       <div
@@ -30,9 +29,18 @@ const Slider = () => {
           transform: `translateX(-${currentIndex * 100}vw)`,
         }}
       >
-        <img src={sliderData[0]} alt="" />
-        <img src={sliderData[1]} alt="" />
-        <img src={sliderData[2]} alt="" />
+        <img
+          src="https://images.pexels.com/photos/1250643/pexels-photo-1250643.jpeg"
+          alt=""
+        />
+        <img
+          src="https://images.pexels.com/photos/3843442/pexels-photo-3843442.jpeg"
+          alt=""
+        />
+        <img
+          src="https://images.pexels.com/photos/4066292/pexels-photo-4066292.jpeg"
+          alt=""
+        />
       </div>
       <div className="icons">
         <ArrowBackIosNewOutlinedIcon className="arrow" onClick={handleLeft} />

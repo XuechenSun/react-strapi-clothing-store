@@ -4,7 +4,9 @@ import "./index.scss";
 
 const Card = ({ item }) => {
   return (
-    <Link to={`product/${item.id}`} className="link">
+    // "/product/${id}" is an absolute path
+    // "product/${id}" is a relative path and will be concatenated to the end of the current path
+    <Link to={`/product/${item.id}`} className="link">
       <div className="card">
         <div className="image">
           {/* A <span> is always generated, even if it contains an empty string.*/}
