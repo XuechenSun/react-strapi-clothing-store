@@ -6,6 +6,8 @@ import Product from "../pages/Product";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Sale from "../pages/Sale";
+import About from "../pages/Information/About";
+import Questions from "../pages/Information/Questions";
 
 const Layout = () => {
   return (
@@ -28,6 +30,14 @@ export default [
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/questions",
+        element: <Questions />,
       },
       {
         path: "/products/:categoryId",

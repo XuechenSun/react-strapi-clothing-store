@@ -26,7 +26,7 @@ const Products = () => {
         : selectedSubCate.filter((item) => item !== value)
     );
   };
-  console.log(selectedSubCate);
+  // console.log(selectedSubCate);
   return (
     <div className="products">
       <div className="left">

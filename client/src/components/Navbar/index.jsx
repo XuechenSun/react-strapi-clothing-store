@@ -21,6 +21,7 @@ const Navbar = () => {
 
   const womenCategory = data.find((cate) => cate.title === "women");
   const menCategory = data.find((cate) => cate.title === "men");
+  const childrenCategory = data.find((cate) => cate.title === "children");
 
   const products = useSelector((state) => state.cart.products);
 
@@ -50,11 +51,13 @@ const Navbar = () => {
               </Link>
             )}
           </div>
-          <div className="item">
-            <Link className="link" to="products/3">
-              Children
-            </Link>
-          </div>
+          {childrenCategory && (
+            <div className="item">
+              <Link className="link" to={`products/${childrenCategory.id}`}>
+                Children
+              </Link>
+            </div>
+          )}
         </div>
         <div className="center">
           <Link className="link" to="/">
@@ -68,13 +71,13 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="item">
-            <Link className="link" to="/">
+            <Link className="link" to="/about">
               About
             </Link>
           </div>
           <div className="item">
-            <Link className="link" to="/">
-              Contract
+            <Link className="link" to="/questions">
+              FAQ
             </Link>
           </div>
           <div className="item">
