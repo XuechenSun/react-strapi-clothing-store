@@ -4,7 +4,7 @@ import "./index.scss";
 
 const Card = ({ item }) => {
   return (
-    <Link to={`product/${item.id}`} className="link">
+    <Link to={`/product/${item.id}`} className="link">
       <div className="card">
         <div className="image">
           {/* A <span> is always generated, even if it contains an empty string.*/}
